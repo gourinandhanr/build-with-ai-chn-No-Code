@@ -25,6 +25,26 @@ Plan the optimized pick-up route based on scheduled pick-ups
 User can access these information on an integrated dashboard
 Deployed using GCP
 
+### System Workflow
+
+1. Garbage data (weight logs) is collected per user. This step is actually done using an embedded system attached to the vehicle. This method helps to avoid user interaction, significantly increasing the reliability and ease of use of the system.
+2. TimesFM predicts whether pickup is required  
+3. If pickup is needed:  
+   - Location is processed using Geocoding API  
+   - Optimized routes are generated using Directions API  
+4. Results are converted into readable format using Reverse Geocoding API  
+5. Data is displayed on a dashboard and managed via GCP  
+
+
+### Impact
+
+- Reduces carbon emissions by selecting optimised path and visiting only necessary locations
+- Reduces fuel consumption  
+- Eliminates inefficient pickups (half-empty or overflow cases)  
+- Optimizes operational costs  
+- Enables an AI-driven waste management system
+
+---
 
 ## Google AI Usage
 
@@ -61,22 +81,16 @@ We used Google TimesFM, a pre-trained time-series foundation model developed by 
 - Ensures reliable and scalable infrastructure  
 ---
 
-### System Workflow
+## Screenshot
 
-1. Garbage data (weight logs) is collected per user  
-2. TimesFM predicts whether pickup is required  
-3. If pickup is needed:  
-   - Location is processed using Geocoding API  
-   - Optimized routes are generated using Directions API  
-4. Results are converted into readable format using Reverse Geocoding API  
-5. Data is displayed on a dashboard and managed via GCP  
+### Dashboard
+![Dashboard](./Dashboard)
 
+### Add User
+![Add User](./Add_User)
+
+### Log Weight  (This UI is implemented for demonstrating the API endpoint. Actually weight is logged from the embedded system directly to API endpoint as mentioned in system workflow)
+![Log Weight](./Log_Weight)
 ---
+##Demo Video
 
-### Impact
-
-- Reduces carbon emissions by selecting optimised path and visiting only necessary locations
-- Reduces fuel consumption  
-- Eliminates inefficient pickups (half-empty or overflow cases)  
-- Optimizes operational costs  
-- Enables an AI-driven waste management system  
