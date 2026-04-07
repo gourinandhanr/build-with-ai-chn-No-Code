@@ -33,7 +33,9 @@ Deployed using GCP
    - Location is processed using Geocoding API  
    - Optimized routes are generated using Directions API  
 4. Results are converted into readable format using Reverse Geocoding API  
-5. Data is displayed on a dashboard and managed via GCP  
+5. Data is displayed on a dashboard, the path optimized visit order is given as a priority badge.
+6. The webapp is deployed in GCP.
+7. The truck refer the priority of each location and visit the locations in that order for optimized path.
 
 
 ### Impact
@@ -93,4 +95,12 @@ We used Google TimesFM, a pre-trained time-series foundation model developed by 
 ![Log Weight](./Log_Weight)
 ---
 ##Demo Video
+
+---
+## Installation steps
+We deployed this web app on google cloud platform. The link is provided below.
+[Click here to visit the deployed dashboard](https://pickup-optimizer-411022110878.us-central1.run.app/dashboard/index.html)
+
+There is limitation to run this locally as the app uses bigquery to run TimesFM. Also, the judges adviced us it is okay to just provide the link due to this reason.
+
 
