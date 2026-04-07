@@ -1,0 +1,170 @@
+﻿
+[+] Health check ...
+
+========================================================================
+  GET /health
+========================================================================
+{
+  "status": "healthy",
+  "mock_maps": true
+}
+
+
+[+] Testing POST /optimize-pickup ...
+
+========================================================================
+  POST /optimize-pickup  [U001 ΓÇô expect pickup=True]
+========================================================================
+{
+  "user_id": "U001",
+  "should_pick_up_today": true,
+  "pickup_address": "123 Main Street, Mumbai",
+  "pickup_coordinates": {
+    "lat": 18.75,
+    "lng": 72.02
+  },
+  "route": {
+    "distance": "10.8 km",
+    "duration": "27 mins",
+    "steps": [
+      {
+        "instruction": "Head north on Main St",
+        "distance": "0.5 km",
+        "duration": "2 mins"
+      },
+      {
+        "instruction": "Turn right onto Park Ave",
+        "distance": "9.8 km",
+        "duration": "22 mins"
+      },
+      {
+        "instruction": "Arrive at destination",
+        "distance": "0.5 km",
+        "duration": "3 mins"
+      }
+    ],
+    "waypoints": [
+      "Mock Address at (19.0760, 72.8777)",
+      "Mock Address at (18.7500, 72.0200)"
+    ]
+  },
+  "message": "Pickup scheduled. Route optimised for current load."
+}
+
+========================================================================
+  POST /optimize-pickup  [U002 ΓÇô expect pickup=False]
+========================================================================
+{
+  "user_id": "U002",
+  "should_pick_up_today": false,
+  "pickup_address": null,
+  "pickup_coordinates": null,
+  "route": null,
+  "message": "No pickup needed today based on current profile."
+}
+
+========================================================================
+  POST /optimize-pickup  [U003 ΓÇô expect pickup=True, spike]
+========================================================================
+{
+  "user_id": "U003",
+  "should_pick_up_today": true,
+  "pickup_address": "789 Lake Road, Bangalore",
+  "pickup_coordinates": {
+    "lat": 18.85,
+    "lng": 72.92
+  },
+  "route": {
+    "distance": "11.7 km",
+    "duration": "29 mins",
+    "steps": [
+      {
+        "instruction": "Head north on Main St",
+        "distance": "0.5 km",
+        "duration": "2 mins"
+      },
+      {
+        "instruction": "Turn right onto Park Ave",
+        "distance": "10.7 km",
+        "duration": "24 mins"
+      },
+      {
+        "instruction": "Arrive at destination",
+        "distance": "0.5 km",
+        "duration": "3 mins"
+      }
+    ],
+    "waypoints": [
+      "Mock Address at (19.0760, 72.8777)",
+      "Mock Address at (18.8500, 72.9200)"
+    ]
+  },
+  "message": "Pickup scheduled. Route optimised for current load."
+}
+
+========================================================================
+  POST /optimize-pickup  [U004 ΓÇô expect pickup=False, declining]
+========================================================================
+{
+  "user_id": "U004",
+  "should_pick_up_today": false,
+  "pickup_address": null,
+  "pickup_coordinates": null,
+  "route": null,
+  "message": "No pickup needed today based on current profile."
+}
+
+========================================================================
+  POST /optimize-pickup  [U999 ΓÇô expect 404]
+========================================================================
+{
+  "status_code": 404,
+  "detail": {
+    "detail": "User 'U999' not found"
+  }
+}
+
+
+[+] Testing GET /pickup-locations-today ...
+
+========================================================================
+  GET /pickup-locations-today
+========================================================================
+[
+  {
+    "user_id": "U001",
+    "address": "123 Main Street, Mumbai",
+    "coordinates": {
+      "lat": 18.75,
+      "lng": 72.02
+    },
+    "priority": 1,
+    "latest_weight": 62.5
+  },
+  {
+    "user_id": "U005",
+    "address": "654 River Side, Pune",
+    "coordinates": {
+      "lat": 18.37,
+      "lng": 72.45
+    },
+    "priority": 2,
+    "latest_weight": 60.0
+  },
+  {
+    "user_id": "U003",
+    "address": "789 Lake Road, Bangalore",
+    "coordinates": {
+      "lat": 18.85,
+      "lng": 72.92
+    },
+    "priority": 3,
+    "latest_weight": 56.0
+  }
+]
+
+
+------------------------------------------------------------------------
+[OK] All tests completed successfully!
+------------------------------------------------------------------------
+

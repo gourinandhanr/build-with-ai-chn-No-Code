@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Optimizer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <h2>Pickup<span>Opt</span></h2>
+            </div>
+            <nav class="menu">
+                <a href="#overview" class="menu-item active" data-target="overview">Dashboard</a>
+                <a href="#add-user" class="menu-item" data-target="add-user">Add User</a>
+                <a href="#add-weight" class="menu-item" data-target="add-weight">Log Weight</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="top-nav glass-panel">
+                <h1>Fleet Overview</h1>
+                <div class="user-profile">Admin</div>
+            </header>
+
+            <div class="views">
+                <!-- Overview View -->
+                <section id="overview" class="view active">
+                    <div class="card glass-panel full-width">
+                        <h3>Today's Scheduled Pickups</h3>
+                        <p class="subtitle">Live routing based on TimesFM threshold models.</p>
+                        <ul id="pickups-list" class="pickup-list">
+                            <li class="loading">Loading pickups...</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Add User View -->
+                <section id="add-user" class="view">
+                    <div class="card glass-panel">
+                        <h3>Register New User</h3>
+                        <form id="form-add-user" class="custom-form">
+                            <div class="form-group">
+                                <label for="u_identifier">User Identifier</label>
+                                <input type="text" id="u_identifier" placeholder="e.g. U007" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_address">Full Pickup Address</label>
+                                <textarea id="u_address" rows="3" placeholder="123 Example Street, City" required></textarea>
+                            </div>
+                            <button type="submit" class="btn primary">Add User</button>
+                            <div class="form-alert" id="user-alert"></div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Add Weight View -->
+                <section id="add-weight" class="view">
+                    <div class="card glass-panel">
+                        <h3>Log Daily Weight</h3>
+                        <form id="form-add-weight" class="custom-form">
+                            <div class="form-group">
+                                <label for="w_user_id">User Identifier</label>
+                                <input type="text" id="w_user_id" placeholder="e.g. U001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="w_date">Date</label>
+                                <input type="date" id="w_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="w_weight">Recorded Weight (kg)</label>
+                                <input type="number" id="w_weight" step="0.1" placeholder="55.5" required>
+                            </div>
+                            <button type="submit" class="btn primary">Log Weight</button>
+                            <div class="form-alert" id="weight-alert"></div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
