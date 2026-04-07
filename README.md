@@ -94,8 +94,9 @@ We used Google TimesFM, a pre-trained time-series foundation model developed by 
 ### Log Weight  (This UI is implemented for demonstrating the API endpoint. Actually weight is logged from the embedded system directly to API endpoint as mentioned in system workflow)
 ![Log Weight](./Log_Weight)
 ---
-##Demo Video
+## Demo Video
 [Click here](https://drive.google.com/drive/folders/1XpPrIhoDGzViLRZeDMtkvta43oHBMqJu?usp=sharing)
+It requires a minimum of 5 weight logs for the pickup prediction model (TimesFM) to start infering.
 
 ---
 ## Installation steps
