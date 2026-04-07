@@ -1,1 +1,82 @@
-# build-with-ai-chn-No-Code
+# PickupOpt
+---
+
+## Problem Statement
+
+Garbage Collection in the US follows fixed schedule and inefficient routing, leading to:
+- High Emissions – heavy duty trucks produce ~25% of transport GHG emissions
+- Fuel Inefficiency – garbage trucks get <3mpg and travels ~25000 miles/year leading to excess carbon emission
+- High Operational Cost – collection accounts to 40 – 60% of total waste management cost
+- Inefficient Pickups
+
+## Project Description
+Filter the locations to pick up garbage using predictive analysis. This reduces fuel consumption and thereby carbon emission to a very high extend.  
+
+Use path optimization model to plan pick up routes. 
+### Working
+Logs the weight of garbage collected per user  
+Use this data to predict whether to schedule pick up or not  
+  - Done using Google TimesFM that offers zero shot performance across various domains without retraining
+
+Plan the optimized pick-up route based on scheduled pick-ups  
+
+  - Done using Google directionsService API
+
+User can access these information on an integrated dashboard
+Deployed using GCP
+
+
+## Google AI Usage
+
+### Google TimesFM
+We used Google TimesFM, a pre-trained time-series foundation model developed by Google Research, to predict garbage generation patterns.
+
+- Logs historical garbage weight per user  
+- Performs predictive analysis to determine whether a pickup is required  
+- Enables intelligent scheduling instead of fixed routes  
+- Reduces unnecessary trips, fuel usage, and emissions  
+
+### Google Maps Platform APIs
+
+#### Directions API
+- Used for route optimization  
+- Generates efficient pickup routes based on selected locations  
+- Minimizes travel distance and fuel consumption  
+
+#### Geocoding API
+- Converts addresses into geographic coordinates  
+- Helps in mapping user locations for routing  
+
+#### Reverse Geocoding API
+- Converts geographic coordinates into readable addresses  
+- Used to present route and pickup information clearly  
+
+### Gemini and Antigravity
+- Used for AI-assisted development and integration  
+- Supports intelligent workflows and experimentation  
+
+### Google Cloud Platform (GCP)
+- Used for deployment and scalability  
+- Hosts backend services and APIs  
+- Ensures reliable and scalable infrastructure  
+---
+
+### System Workflow
+
+1. Garbage data (weight logs) is collected per user  
+2. TimesFM predicts whether pickup is required  
+3. If pickup is needed:  
+   - Location is processed using Geocoding API  
+   - Optimized routes are generated using Directions API  
+4. Results are converted into readable format using Reverse Geocoding API  
+5. Data is displayed on a dashboard and managed via GCP  
+
+---
+
+### Impact
+
+- Reduces carbon emissions by selecting optimised path and visiting only necessary locations
+- Reduces fuel consumption  
+- Eliminates inefficient pickups (half-empty or overflow cases)  
+- Optimizes operational costs  
+- Enables an AI-driven waste management system  
