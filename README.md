@@ -95,6 +95,7 @@ We used Google TimesFM, a pre-trained time-series foundation model developed by 
 ![Log Weight](./Log_Weight)
 ---
 ##Demo Video
+[Click here](https://drive.google.com/drive/folders/1XpPrIhoDGzViLRZeDMtkvta43oHBMqJu?usp=sharing)
 
 ---
 ## Installation steps
